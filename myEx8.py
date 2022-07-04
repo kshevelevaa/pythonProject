@@ -32,4 +32,33 @@ def main(s):
         s=s[keyRight+1:]
     return dict
 
-print(main("{<: option q(esesbi_83)==> querte;:> <: option q(onaen_588)==>lein_938; :> <: option q(raraer)==> inre; :>}"))
+
+def main2(s):
+    dict={}
+    s=s.replace(" ", '')
+    s=s.replace("\n", '')
+    while s.find(".<")!= -1:
+        leftKey=s.find(":")
+        rightKey=s.find(".<")
+        key=s[leftKey+2:rightKey]
+        leftValues=s.find('(')
+        rightValues=s.find(')')
+        values=s[leftValues+1: rightValues+1]
+        print(values)
+        massiv = []
+        while values.find(")")!=-1:
+            rightValue=values.find(".")
+            skobka=values.find(")")
+            if rightValue==-1:
+                value=values[0:skobka]
+                values=""
+            elif( rightValue!=-1):
+                value = values[0:rightValue]
+            values = values[rightValue+1:]
+            massiv.append(value)
+        dict[key] = massiv
+        s=s[rightKey+2:]
+    return dict
+
+#print(main("{<: option q(esesbi_83)==> querte;:> <: option q(onaen_588)==>lein_938; :> <: option q(raraer)==> inre; :>}"))
+print(main2("do<sect> #( gear_255 . cedi_385 . ererer . teanis )=:`teate_923.</sect>;<sect> #( aenedra_829 . biti . anorte . aeder_977 )=: `enso.</sect>; done"))
